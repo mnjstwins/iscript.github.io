@@ -187,6 +187,7 @@ jQuery(document).ready(function () {
 				layoutMode : 'masonry', 
 				resizable : false 
 			} );
+			$('#portfolio-filter #filter a').eq(1).click();
 		} );
 		
 		
@@ -198,6 +199,8 @@ jQuery(document).ready(function () {
 			
 		} );
 		
+		
+
 	
 	} )(jQuery);
 } );
