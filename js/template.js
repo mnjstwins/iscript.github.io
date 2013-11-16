@@ -30,7 +30,7 @@
 	
 	
 	$(document).ready(
-	function() {  
+		function() {  
 		$("html").niceScroll();
 		}
 	);	
@@ -258,13 +258,13 @@ $(document).ready(function(){
 		
 	
 	
-	
+	/*
 $(document).ready(function(){
 $(".iframe").colorbox({iframe:true, width:"100%", height:"100%"});	
 });
 
 $(".group1").colorbox({rel:'group1'});	
-	
+	*/
 	
 
 	
