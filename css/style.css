@@ -1,17 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 html, body {
     height: 100%;
     width: 100%;
 }
-
-
 .tl{text-align: left;}
 .white{color: white;}
 body {
     color: #292929;
-
     font-family: "Titillium Web", sans-serif;
     font-weight: normal;
     overflow-x: hidden;
@@ -27,13 +22,16 @@ h2{font-size: 42px;
 line-height: 46px;
 text-transform: uppercase;color: #4f4f4f}
 .container p{text-align: left;padding:10px;font-size: 16px}
-.portfolio-item {
-margin-bottom: 25px;
-}
+
+/* nav */
 .pos-a{position: absolute;width:100%;}
-.inv{background-color: rgba( 0, 0, 0, .5 );
-border-bottom: 1px solid #bfbfbf;color: #fff;}
+.inv{background-color: rgba( 0, 0, 0, .5 );border-bottom: 1px solid #bfbfbf;color: #fff;}
 .inv a{color: #e4e6e5!important;}
+
+/* airport */
+.slide-text{color: #EB767E}
+
+/*hoverdir */
 .da-thumbs a,
 .da-thumbs img {
     display: block;
@@ -54,8 +52,11 @@ border-bottom: 1px solid #bfbfbf;color: #fff;}
     border-bottom: 1px solid rgba(255,255,255,0.5);
     box-shadow: 0 1px 0 rgba(0,0,0,0.1), 0 -10px 0 rgba(255,255,255,0.3);
 }
-.slide-text{color: #EB767E}
-
+.portfolio-item {
+    margin-bottom: 25px;
+}
+ 
+/* section */
 .section {
     background-position: center center;
     background-repeat: no-repeat;
@@ -178,6 +179,7 @@ border-bottom: 1px solid #bfbfbf;color: #fff;}
 #section-4{background: #F98262;color:#fff;}
 #section-5{background: #5B6073;padding-top:0;}
 #section-5 .connect{color: #fff;padding:5px;margin-top: 10px;text-align: left;}
+
 /* 右上角图标 */
 .social-top{ 
     position:absolute;
@@ -326,6 +328,8 @@ border-bottom: 1px solid #bfbfbf;color: #fff;}
   100% {
     background-position: -2053px 0; } }
 
+
+/* footer */
 #footer{
     position: relative;
 width: 100%;
