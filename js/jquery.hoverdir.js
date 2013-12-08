@@ -150,7 +150,7 @@
 			$.fn.applyStyle = this.support ? $.fn.css : $.fn.animate;
 			el.stop().applyStyle( styleCSS, $.extend( true, [], { duration : speed + 'ms' } ) );
 
-		},
+		}
 
 	};
 	
