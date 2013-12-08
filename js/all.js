@@ -1,8 +1,7 @@
 /*
  * 文字变换插件
  */
-
- (function($){ 
+(function($){ 
     $.fn.extend({  
         airport: function(array) {
             
@@ -49,11 +48,11 @@
     }); 
 })(jQuery);
 
+//点击导航移到相应的栏目。
 jQuery(document).ready(function ($) {
 	//Cache some variables
 	var links = $('.nav').find('li');
 	slide = $('.section');
-	button = $('.button');
 	mywindow = $(window);
 	htmlbody = $('html,body');
 	
@@ -76,8 +75,10 @@ jQuery(document).ready(function ($) {
 	});
 });
 
+//标题加上随机名言
 var iTitles = new Array('最足以显示一个人性格的，莫过于他所嘲笑的是什么东西','Tomorrow is another day! ', '有人就有恩怨，有恩怨就有江湖。人就是江湖，你怎么退出？', '做人如果没有梦想，那跟咸鱼有什么区别？','求知若渴，虚心若愚','往往都是事情改变人，人却改变不了事情','你想成为哪一类人，并不取决于你的能力，而是取决于你的选择','强者自救,圣者渡人','生活就像一盒巧克力，你永远不知道你会得到什么。','恐惧让你沦为囚犯，希望让你重获自由','当你不能够再拥有，你唯一可以做的，就是令自己不要忘记。','如果你有梦想，就要守护它。','世界上再没有地方像家一样。','为什么总是正义战胜邪恶？因为只有赢的一方才代表正义'); iTitlesIndex = Math.floor(Math.random() * iTitles.length); document.title = '袁克强的主页 | '+ iTitles[iTitlesIndex];
 
+//导航固定
 $(window).scroll(function(){
     var scroll_top = $(this).scrollTop(); 
     var sec2_top = $("#section-2").offset().top;
@@ -89,8 +90,15 @@ $(window).scroll(function(){
     //console.log(scroll_top +'===' +sec2_top );
 });
 
+//文字变换
 $('.slide-text'  ).airport([ 'CREATIVE', 'awesome', 'professional' ]);
 $('.slide-text1'  ).airport([ 'PHP', 'JAVASCRIPT', 'NODE.js']);
 //$('.slide-text2'  ).airport([ 'branding', 'design', 'development', 'printing']);
 
 $(' .da-thumbs  a').each( function() { $(this).hoverdir(); } );
+
+//a链接怎么失效了？？？？  卧槽。什么情况。。。。
+$(".list-social a,.connect a").click(function(){
+    var href = $(this).attr("href");
+    window.open(href); ;
+});
