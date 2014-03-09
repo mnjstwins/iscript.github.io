@@ -51,213 +51,99 @@
 ;              !oooooooooo**$$$$**oooooo!o*$$$&$&;   ;;o;          
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 -->
-<!doctype html>
-<html > 
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
-<meta name="description" content="来自温州的程序员，专注互联网技术。">
-<meta name="keywords" content="温州,程序员,php,javascript,html5,node.js,app" />
-<meta name="author" content="ykq"><meta name="author" content="">
-<meta name="keywords" content="">
+<meta name="description" content="Web开发工程师@温州，专注互联网技术。">
+<meta name="keywords" content="温州,程序员,PHP,Javascript,Html5,node.js,linux" />
+<meta name="author" content="ykq">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>袁克强的主页</title>
-
-<!-- Style CSS -->
-<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-<link href="css/style.css" media="screen" rel="stylesheet">
-<link href="css/font-awesome.min.css" media="screen" rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> 
-
-
-<!--[if lt IE 11]>
+<title>袁克强的主页</title> 
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="styles/jquery.gridster.css">
+<link rel="stylesheet" type="text/css" href="styles/font-awesome.min.css"> 
+<link rel="stylesheet" type="text/css" href="styles/animate.min.css">  
+<link rel="stylesheet" type="text/css" href="styles/style.css">      		
+<script src="scripts/jquery.js"></script>
+<script src="scripts/jquery.gridster.min.js"></script>
+</head>
+<!--[if lt IE 9]>
 <script>
 window.location.href = "/fuckIE.html";
 </script>
 <![endif]-->
-</head>
-
 <body>
-    <div class="section" id="section-1" data-slide="1">
-       
-        <div id="home-row-1" class="row clearfix">
-            <h1 >袁克强的主页 </h1>
-            <h4 >stay hungry stay foolish</h4>
-        </div><!-- /row -->
-            
-        <div class="social-top">
-            <ul class="list-social">
-                
-                <li class="icon-soc"><a href="http://yuankeqiang.lofter.com"></a></li>
-                <li class="icon-soc"><a href="https://github.com/iScript/"></a></li>
-                
-            </ul>   
-        </div>  
-   </div>
 
-
-    <div class="section" id="section-2" data-slide="2">
-        <nav class="navbar navbar-default inv pos-a" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Ykq+</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            <li data-slide="1"><a href="#">首页</a></li>
-            <li data-slide="2"><a href="#">关于我</a></li>
-            <li data-slide="3"><a href="#">案例</a></li>
-            <li data-slide="4"><a href="#">博客</a></li>
-            <li data-slide="5"><a href="#">联系</a></li>
-        </ul>
-
-
-        </div><!-- /.navbar-collapse -->
-        </nav>
-        <div class="container" style="padding-top:50px">
-            <h2 class="tl">The &nbsp <span class="slide-text"></span></h2>
-            <p>温州 | 程序员、Web开发工程师。</p>
-            <p>热爱php，迷恋javascript，当然不能没有C。</p>
-            <p>追求前言技术，对node.js、noSql、angular.js等有深入研究。</p>
-            <p>爱生活，爱真三，爱睡觉。</p>
-            <p>看看书，运运动，听听歌，旅旅游。</p>
-            <p>我是it攻城湿，我为自己带盐。</p>
-        </div>
+<div class="gridster">
+    <ul>
+        <!-- gridster布局，data-row第几行  data-col第几列 data-sizex/y 大小 -->
         
-    </div>
-
-    <!-- section-3 -->
-    <div class="section" id="section-3" data-slide="3">
-        <div class="container">
-            <!-- row header -->
-            <div class="row">
-                <div class="col-lg-12">
-                <h2 class="page-header tl">PROJECT <small class="slide-text1"></small></h2>
-                </div>
+        <!-- first line-->
+        <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+            <div class="mask bg1">
+                <i class="fa fa-cloud fa-4x"></i>
+                <label>发现</label>
             </div>
-            <!-- row 1-->
-            <div class="row da-thumbs">
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/1.jpg">
-                <div class="mask" style=""><span>PHP/Laravel</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/2.jpg">
-                <div class="mask" style=""><span>JavaScript</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/3.jpg">
-                <div class="mask" style=""><span>Node.js构建实时应用</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/4.jpg">
-                <div class="mask" style=""><span>Angular.js构建现代化web应用</span></div>
-                </a>
-                </div>
+            <div class="cc">稍后放上</div>
+        </li>
+        <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+            <div class="mask bg2">
+                <i class="fa fa-code-fork fa-4x"></i>
+                <label>服务</label>
             </div>
-
-             <!-- row 2 -->
-            <div class="row da-thumbs">
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/5.jpg">
-                <div class="mask" style=""><span>在线商城</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/6.jpg">
-                <div class="mask" style=""><span>门户网站建设</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/7.jpg">
-                <div class="mask" style=""><span>微信第三方平台</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/8.jpg">
-                <div class="mask" style=""><span>手机App开发</span></div>
-                </a>
-                </div>
-            </div>
-
-            <!-- row 3 -->
-            <div class="row da-thumbs">
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/9.jpg">
-                <div class="mask" style=""><span>跨平台桌面软件</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/10.jpg">
-                <div class="mask" style=""><span>WebSocket</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/11.jpg">
-                <div class="mask" style=""><span>其他</span></div>
-                </a>
-                </div>
-
-                <div class="col-md-3 portfolio-item">
-                <a href="#"><img class="img-responsive" src="images/case/12.jpg">
-                <div class="mask" style=""><span>其他</span></div>
-                </a>
-                </div>
-            </div>
-
-        </div>
-    </div>  
-    <!-- section-4 -->
-    <div class="section" id="section-4" data-slide="4">
-        <h2>博客</h2>
-        <p>目前博客暂时在网易<a href="http://yuankeqiang.lofter.com">LOFTER</a></p>
-        <iframe name="iframe_canvas" src="http://douban.fm/partner/baidu/doubanradio" scrolling="no" frameborder="0" width="420" height="190"></iframe>
-    </div>
-
-    <!-- section-5 -->
-    <div class="section" id="section-5" data-slide="5">
-        <div id="separator2">
-            <div class="separator2-wrap">
-                <div class="container">
-                    <div class="sixteen columns">
-                        <h3><strong>Let's work together</strong> and create something awesome!</h3>
+            <div class="cc">
+                <div class="slide_box">
+                    <div class="slide">
+                        <p><img src="images/c/1.jpg" width="140px" height="140px;">
+                            <span>网站开发</span></p>
+                        <p><img src="images/c/2.jpg" width="140px" height="140px;">
+                            <span>手机应用开发</span></p>
+                        <p><img src="images/c/3.jpg" width="140px" height="140px;">
+                            <span>技术顾问</span></p>
+                        <p><img src="images/c/4.jpg" width="140px" height="140px;">
+                            <span>微信公众平台</span></p>
+                        <p><img src="images/c/5.jpg" width="140px" height="140px;">
+                            <span>各种互联网应用</span></p>
                     </div>
                 </div>
-                <span class="plane"></span> 
+                <div class="slide_info"><p></p></div>
             </div>
-        </div>
-        <div class="container">
-            <h2 class="white">Contact</h2>
-            <h4 class="tl white">业余时间提供各种技术服务、兼职等。包括前端、后端、左端(手机app)、右端(桌面软件)。</h4>
-            <div class="connect">QQ : 379395979 <a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=e6d8e8a876b71ecd43e6f3d61283fd9d92e8d0b51a406de9"><img border="0" src="http://pub.idqqimg.com/qconn/site/images/intro/wpa_style_51.gif" alt="点击这里给我发消息" title="点击这里给我发消息"></a></div>
-            <div class="connect">Email : 379395979@qq.com <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HywoJiwmKiYoJl9ubjF8cHI" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_02.png"/></a></div>
-            <div class="connect">微信 : yuankeq33</div>
+        </li>
+        <li data-row="1" data-col="4" data-sizex="2" data-sizey="2">
+            <div class="mask bg3">
+                <i class="fa fa-user fa-4x"></i>
+                <label>关于我</label>
+            </div>
+            <div class="cc">
+                <div class="about">
+                    <p>Web开发工程师@温州。</p>
+                    <p>游走于二进制和二次元。</p>
+                    <p>喜欢各种技术：PHP、Javascript、Node.js、Html5、C/C++、Linux、SQL。</p>
+                    <p>爱生活，爱真三，爱睡觉。</p>
+                    <p>看看书，运运动，听听歌，旅旅游。</p>
+                    <p>我是it攻城湿，我为自己带盐。</p>
+                </div>
+            </div>
+        </li>
+        <li data-row="1" data-col="6" data-sizex="1" data-sizey="1">
+            <div class="mask bg4">
+                <i class="fa fa-github fa-4x"></i>
+                <label>github</label>
+            </div>
+            <div class="cc">
+                <a href="https://github.com/iScript/iscript.github.io"><img src="images/github.png" width="100%" height="100%"></a>
+            </div>
+        </li>
 
-            <DIV>
-                <h4 style="color:white;padding:5px">留言</h4>
-                <div class="ds-thread" style="background:white;padding:10px"></div>
+        <!--2,3 line -->
+        <li data-row="2" data-col="1" data-sizex="3" data-sizey="2" style="">
+            <div class="mask bg5">
+                <i class="fa fa-envelope fa-4x"></i>
+                <label>留言</label>
+            </div>
+            <div class="cc">
+                <div class="ds-thread" ></div>
                 
                 <script type="text/javascript">
                 var duoshuoQuery = {short_name:"yuankeqiang"};
@@ -270,35 +156,48 @@ window.location.href = "/fuckIE.html";
                     || document.getElementsByTagName('body')[0]).appendChild(ds);
                 })();
                 </script>
+            </div>
+        </li>
 
-            </DIV>
-        </div>
-        
-       
-    </div>
-
-    <div id="footer">
-        <div class="container">
+        <li data-row="2" data-col="6" data-sizex="1" data-sizey="1">
+            <div class="mask bg6">
+                <i class="fa fa-facebook fa-4x"></i>
+                <label>博客</label>
+            </div>
+            <div class="cc">
+                <a href="http://yuankeqiang.lofter.com/"><img src="images/lofter.jpg" width="100%" height="100%"></a>
+            </div>
+        </li>
+        <li data-row="3" data-col="4" data-sizex="2" data-sizey="1">
+            <div class="mask bg7">
+                <i class="fa fa-twitter fa-4x"></i>
+                <label>案例</label>
+            </div>
+            <div class="cc">稍后放上</div>
+        </li>
+        <li data-row="3" data-col="6" data-sizex="1" data-sizey="1">
+            <div class="mask bg8">
+                <i class="fa fa-phone fa-4x"></i>
+                <label>联系</label>
+            </div>
+            <div class="cc contact">
+                <p>QQ : 379395979 </p>
+                <p>微信 : yuankeq33</p>
+                 <a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HywoJiwmKiYoJl9ubjF8cHI" style="text-decoration:none;"><img src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_02.png"/></a>
+            </div>
            
-                <p>© 2013 Ykq. All rights reserved. </p>
-            
-            
-                <div class="social-footer" style="text-align:center;">
-                    <div class="social-footer">
-                    <script src="http://s16.cnzz.com/stat.php?id=5673277&web_id=5673277&show=pic1" language="JavaScript"></script>
-	               	 <script type="text/javascript">
-                    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-                    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F39df0d7283640c00f78b622f3b7c72d6' type='text/javascript'%3E%3C/script%3E"));
-                    </script>  
-                    </div>
-                </div>
-              
-        </div>
-    </div>
+        </li>
+    </ul>
+</div>
 
-    <script type="text/javascript" src="js/modernizr.custom.97074.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery.hoverdir.js"></script>
-    <script type="text/javascript" src="js/all.js"></script>
+<div class="social-footer">
+<script src="http://s16.cnzz.com/stat.php?id=5673277&web_id=5673277&show=pic1" language="JavaScript"></script>
+ <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F39df0d7283640c00f78b622f3b7c72d6' type='text/javascript'%3E%3C/script%3E"));
+</script>  
+</div>
+<script type="text/javascript" src="scripts/script.js"></script>
 </body>
 </html>
+
