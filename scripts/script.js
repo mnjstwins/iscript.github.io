@@ -41,5 +41,6 @@ $(document).ready(function(){
 
 });
 window.onload = function(){
+	$(".spinner").hide();
 	$(".gridster").show();
 }
