@@ -23,12 +23,13 @@ ul{list-style: none;}
     box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
 }
 
-.gridster li{position: relative;overflow: hidden;}
-.cc{}
+.gridster li{position: relative;overflow: hidden;opacity: 0.9}
+.cc{width: 100%;height: 100%}
 .cc p{font-size: 14px;color: #34495e;}
-.about{padding-top: 20px}
+.about{padding-top: 20px;width: 100%;height: 100%;}
 .about p{padding:0 20px ;}
-.contact{padding:10px;}
+.contact{padding:10px;background: #5cb85c;width: 100%;height: 100%}
+.contact p{color: white;border-bottom:1px solid white;padding:5px 0;}
 .ds-thread{padding:0 10px;}
 
 .slide_box{height: 140px;width:140px;overflow: hidden;}
@@ -52,6 +53,7 @@ ul{list-style: none;}
 .bg8{background:  #8da356;}
 
 .social-footer{position: fixed;bottom:0;right: 0;}
+.cc .btn{margin:5px;}
 
 #myWorks{background: white;padding:10px;margin:0;}
 
