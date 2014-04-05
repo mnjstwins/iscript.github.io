@@ -58,7 +58,7 @@ ul{list-style: none;}
 /* 案例页 */
 #myWorks{background: white;padding:10px;margin:0;}
 #myWorks p{line-height: 200%;padding:10px;color: #666}
-#myWorks img{display: block;}
+#myWorks img{display: block;margin:15px 0;}
 /* loading */
 .spinner {
   margin: 100px auto;
