@@ -44,7 +44,7 @@ $(document).ready(function(){
 
 	//fancybox
 	$(document).ready(function() {
-		$(".fancybox").fancybox({type: 'iframe'});
+		//$(".fancybox").fancybox({type: 'iframe'});
 	});
 
 });
