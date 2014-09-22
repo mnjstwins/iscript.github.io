@@ -60,6 +60,7 @@ background:url(../images/resume-bg.jpg);
 background-size:100%;
 background-repeat:no-repeat;
 }
+#resume a{font-size: 12px;position:absolute;right:10px;bottom: 10px;text-decoration: none;}
 
 /* 案例页 */
 #myWorks{background: white;padding:10px;margin:0;}
