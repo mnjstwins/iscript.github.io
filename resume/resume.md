@@ -76,5 +76,5 @@
 ---
 
 ##
-[返回主页](http://iscript.github.io/ "Title")
-power by markdown.
+* [返回主页](http://iscript.github.io/ "Title")
+* power by markdown.
