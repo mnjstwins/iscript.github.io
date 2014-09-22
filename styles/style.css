@@ -55,10 +55,17 @@ ul{list-style: none;}
 .social-footer{position: fixed;bottom:0;right: 0;}
 .cc .btn{margin:5px;}
 
+#resume{width: 100%;height: 100%;
+background:url(../images/resume-bg.jpg);
+background-size:100%;
+background-repeat:no-repeat;
+}
+
 /* 案例页 */
 #myWorks{background: white;padding:10px;margin:0;}
 #myWorks p{line-height: 200%;padding:10px;color: #666}
 #myWorks img{display: block;margin:15px 0;}
+
 /* loading */
 .spinner {
   margin: 100px auto;
