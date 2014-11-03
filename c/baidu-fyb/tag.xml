@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+<item type="text" detail="jQuery" link="#" weight="60"/> 
+<item type="text" detail="php" link="#" weight="60"/> 
+<item type="text" detail="ecshop" link="#" weight="40"/> 
+<item type="text" detail="http" link="#" weight="20"/> 
+<item type="text" detail="MongoDB" link="#" weight="60"/> 
+<item type="image" detail="http://www.google.com.hk/images/nav_logo170_hr.png" link="#" weight="20"/> 
+<item type="text" detail="html5" link="#" weight="20"/> 
+<item type="text" detail="css3" link="#" weight="60"/> 
+<item type="text" detail="mysql" link="#" weight="20"/> 
+<item type="text" detail="NoSql" link="#" weight="40"/> 
+<item type="text" detail="linux" link="#" weight="20"/> 
+<item type="text" detail="firefox" link="#" weight="20"/> 
+<item type="text" detail="https" link="#" weight="60"/> 
+<item type="text" detail="chrome" link="#" weight="40"/> 
+<item type="text" detail="google" link="#" weight="40"/> 
+<item type="text" detail="javascript" link="#" weight="60"/> 
+<item type="text" detail="moon" link="#" weight="20"/> 
+<item type="text" detail="canvas" link="#" weight="20"/> 
+<item type="text" detail="php100" link="#" weight="60"/> 
+</root>

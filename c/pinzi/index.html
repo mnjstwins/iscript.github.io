@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"></meta>
+    <title>微信头像拼图</title>   
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
+        overflow-y:hidden;
+      }
+      #view{width:100%;height:100%;}
+      .formDiv{padding:5px;}
+      #container{width: 100%;height:100%;position: absolute;z-index: 999;}
+      #container canvas{position: absolute;z-index: 999}
+      canvas{width: 100%;height:100%;}
+    </style>        
+    <script src="jquery.min.js"></script>               
+    <script src="kinetic-v4.7.4.min.js"></script>
+</head>
+<body >
+<!--
+网页不要缩放
+效率问题还有待改进
+-->
+
+
+<div id="view">
+
+        <div id="form" style="">
+            <!-- <h1>文字拼图</h1>-->
+            <div>
+                <input type="text" value="" name="text" id="text" />
+                <select id="zs">
+                    <option value="30">30字号</option>
+                    <option value="20">20字号</option>
+                    <option value="15">15字号</option>
+                </select>
+                <input type="button" id="qd" value="确定"/>
+                <input type="button" id="bs" value="变身"/>
+                <span id="loading" style="color:red">网页加载中。。。</span>
+                <span> 用于婚礼项目的一个小游戏，用户微信头像拼图 - ykq 2013 </span>
+            </div>
+        </div>
+        
+        <div id="container" >
+        </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+var canvasWidth = $(document.body).width();
+var canvasHeight = 1500;
+var stage = new Kinetic.Stage({container: 'container', width:canvasWidth, height:canvasHeight});
+var mainLayer = new Kinetic.Layer();
+var mapLayer = new Kinetic.Layer();
+var tipsLayer = new Kinetic.Layer();
+var gLength = 40;  
+var map = new Array();
+var deskImage;
+var desks = [];
+var timer;
+var l = 25;
+var loc = [];
+var fontSize = 30;  //一个字的大小
+var mr = 150;       //一个字时的左边距
+var mt = 50;
+stage.add(mainLayer);
+
+//加载图片
+function loadImages(sources, callback){
+    var images =[];
+    var loadedImages = 0;
+    var numImages = 0;
+    for (var i=0;i<sources.length;i++) {
+        
+        images[i] = new Image();
+        images[i].src = sources[i];
+        images[i].onload = function(){
+            numImages++;
+            if(numImages == sources.length){
+                //图片全部加载完成后执行主方法。
+                callback(images);
+            }
+        }
+    }
+}
+
+// 随机获取数组中的值
+var getRandomInArray = function(arr){
+    var l = arr.length;
+    var r = Math.floor(Math.random() * l);
+    return arr[r];
+};
+
+// 数组随机排序
+var shuffle = function(arr){
+    for(var i=0;i<arr.length;i++){
+        var j = Math.floor(Math.random() * arr.length);
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    return arr;
+};
+
+//获取像素点
+function get_pixel_rgb(x,y){
+    var c = document.getElementsByTagName("canvas")[0];
+    var ctx = c.getContext("2d");
+    //获取画布上的像素数据，以数组形式。 
+    var canvasData = ctx.getImageData(x,y, 1,1).data;
+    return canvasData;
+}
+
+
+
+//调整字体及距离
+function adjustFT(ft){
+    switch(ft){
+        case "30": 
+            fontSize = 30;mr = 150;mt=50;break;
+        case "20" :
+            fontSize = 20;mr = 100;mt=100;break;
+        case "15" :
+            fontSize = 15;mr = 120;mt=200;break;
+        default :
+            fontSize = 30;mr = 150;mt=50;break;
+    }
+}
+
+//所有加载完成后开始绘图。
+function initStage(images){
+    $("#loading").html('加载完成。');
+
+    function createZi(val){
+        mainLayer.removeChildren();
+        mainLayer.clear();
+        mainLayer.draw();
+        var text = new Kinetic.Text({
+            x: 0,
+            y: 0,
+            text: val,
+            fontSize: fontSize,
+            fontFamily : '宋体',
+            align : 'left',
+            fill: 'red'
+        });
+        mainLayer.add(text);
+        mainLayer.draw();
+        //先通过扫描获取红色坐标
+        for(var i=0;i<80;i++){
+            for(var j=0;j<35;j++){
+                var r = get_pixel_rgb(i,j);
+                // 判断红色 ??????
+                if(r[0] > 200 && r[1] < 50 && r[3] > 140){
+                    var a = [];
+                    a.push(i);a.push(j);
+                    loc.push(a);       
+                }
+            }
+        }
+
+        var b = 20;
+        for(var i=0;i<loc.length;i++){
+            //计算坐标
+            if(i < Math.floor(loc.length/2)){
+                var x = 0;
+                var y = i*l;
+                if(y > l*b){
+                    x = x+l;
+                    y = (i%b)*l;
+                } 
+                y = y +200;
+            }else{
+                var x = canvasWidth -l;
+                var y = (i*l) - (Math.floor(loc.length/2)*l);
+                if(y > l*b) {
+                    x = canvasWidth -l-l;
+                    y = (i%b)*l;
+                }
+                y = y + 200;
+            }
+            //把头像放到2边
+            var img = new Kinetic.Image({
+                x: x,
+                y: y,
+                image: getRandomInArray(images),
+                width : l,
+                height : l ,
+                rX : mr+ (loc[i][0])*l,
+                rY : mt+ (loc[i][1])*l,
+                name : 'avator'
+            });
+            mainLayer.add(img);
+            mainLayer.draw();
+        }
+    }
+    
+    /*
+    if(localStorage.zi && getRequest().auto =="true"){
+        $(window).scrollTop(160);
+        var val = localStorage.zi ;
+        var ft = localStorage.ft;
+        adjustFT(ft);
+        createZi(val);
+        //bianshen();
+    }    
+    */
+
+    //点击确定
+    $("#qd").click(function(){
+        mainLayer.removeChildren();
+        mainLayer.clear();
+        mainLayer.draw();
+
+        //stage.clear();
+        var val = localStorage.zi =  $("#text").val();
+        var ft = localStorage.ft = $("#zs option:selected").val();
+        adjustFT(ft);
+        createZi(val);
+    });
+
+    //点击变身将头像通过动画变成字
+    function bianshen(){
+        var avator = stage.find(".avator");
+        setTimeout(function(){
+            timer = setInterval(function(){
+                if(avator.length <=0) {
+                    clearInterval(timer);
+                    //v.play();
+                    //$("#flash").show();
+                    return;
+                }
+                shuffle(avator);
+                
+                var a = avator.pop();
+                var x = a.attrs.rX;
+                var y = a.attrs.rY;
+                var tween = new Kinetic.Tween({
+                    node: a, 
+                    duration: 1,
+                    x: x,
+                    y: y,
+                    rotation: Math.PI * 2,
+                    opacity: 1,
+                    scaleX: 1.5
+                });
+                tween.play();
+                mainLayer.draw();
+            },50);
+        },1000);
+    }
+
+    //点击变身
+    $("#bs").click(function(){
+        $(window).scrollTop(160);
+        $("#flash").show();
+        bianshen();
+    });
+}
+
+//完成后开始加载图片
+window.onload = function(){
+    //这里是静态的，正式版是从服务端读取。
+    var sources = ['images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg','images/9.jpg','images/10.jpg','images/11.jpg','images/12.jpg','images/13.jpg','images/14.jpg','images/15.jpg','images/16.jpg','images/17.jpg'];
+    loadImages(sources, initStage);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+    <title>绚丽时钟</title>、
+    <style type="text/css">
+    #canvas{margin:10px auto;display:block;}
+    </style>
+</head>
+<body>
+	<canvas id="canvas" width="1000px" height="700px" ></canvas>
+	<script src="scripts/digit.js" ></script>
+	<script type="text/javascript">
+	var WINDOW_WIDTH = 1024;
+	var WINDOW_HEIGHT = 700; 	//document.body.clientHeight
+
+	var RADIUS = 8;
+	var MARGIN_TOP = 60;
+	var MARGIN_LEFT = 30; 
+
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext("2d");
+
+	canvas.width = WINDOW_WIDTH;
+	canvas.height = WINDOW_HEIGHT;
+
+
+	var balls = [];
+	
+	//当前时间
+	var d = new Date();
+	var cHours = d.getHours(); 
+	var cMinutes = d.getMinutes();
+	var cSeconds = d.getSeconds();
+
+	window.onload = function(){
+		setInterval(function(){
+			render(context);
+			update();
+		},50);
+	}
+
+	/**
+	 * 更新
+	 *
+	 */
+	function update(){
+		console.log(balls.length);
+
+		//更新时间
+		var d = new Date();
+		var nHours = d.getHours(); 
+		var nMinutes = d.getMinutes();
+		var nSeconds = d.getSeconds();
+		
+		//若时间不一致，则添加彩色球
+		if(nSeconds != cSeconds){
+			// hour ball
+			if(parseInt(cHours/10) != parseInt(nHours/10)){
+				addBalls(MARGIN_LEFT,MARGIN_TOP,parseInt(nHours/10));
+			}
+			if(parseInt(cHours%10) != parseInt(nHours%10)){
+				addBalls(MARGIN_LEFT+30*(RADIUS+1),MARGIN_TOP,parseInt(nHours%10));
+			}
+
+			// minute ball
+			if(parseInt(cMinutes/10) != parseInt(nMinutes/10)){
+				addBalls(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(nMinutes/10));
+			}
+			if(parseInt(cMinutes%10) != parseInt(nMinutes%10)){
+				addBalls(MARGIN_LEFT+54*(RADIUS+1),MARGIN_TOP,parseInt(nMinutes%10));
+			}
+
+			//second ball
+			if(parseInt(cSeconds/10) != parseInt(nSeconds/10)){
+				addBalls(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(nSeconds/10));
+			}
+			if(parseInt(cSeconds%10) != parseInt(nSeconds%10)){
+
+				addBalls(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(nSeconds%10));
+			}
+
+			cHours = nHours;
+			cMinutes = nMinutes;
+			cSeconds = nSeconds;
+
+
+		}
+		
+		//彩色球移动
+		for(var i=0;i<balls.length;i++){
+			
+			//x,y移动距离
+			balls[i].x += balls[i].vx; 
+			balls[i].y += balls[i].vy; 
+			//y加速
+			balls[i].vy += balls[i].g;
+
+			//碰撞检测
+			if(balls[i].y >= WINDOW_HEIGHT){
+				balls[i].y = WINDOW_HEIGHT;
+				// 到底部之后 例 
+				// y坐标700  加速度vy 30 改为 -21  ，负数往上运动
+				// 下一次循环： y=700-21=679  加速度-19
+				// y=679-19 =660 加速度-17 .. 直到vy为正继续向下
+				// ....
+				balls[i].vy = -balls[i].vy *0.7;
+
+			}
+			
+			
+		}
+
+		//删除移除画面的小球
+		while(balls.length>500){
+			balls.shift();
+		}
+		
+	}  
+
+
+	function addBalls(x,y,num){
+		for(var i=0;i<digit[num].length;i++){
+			for(var j=0;j<digit[num][i].length;j++){
+				if(digit[num][i][j] == 1){
+					
+					//小球
+					var aBall = {
+						x:x+j*2*(RADIUS+1)+(RADIUS),
+						y:y+i*2*(RADIUS+1)+(RADIUS),
+						g:1.5+Math.random(), 	//加速度
+						vx : Math.pow(-1,Math.ceil(Math.random()*1000))*2,	//x移动 +-4
+						vy : -4,		//y移动
+						color: (function(){
+							return "#"+("00000"+((Math.random()*16777215+0.5)>>0).toString(16)).slice(-6);
+						})()
+					}
+					balls.push(aBall);
+				
+				}
+			}
+		}
+	}
+
+	
+	/**
+	 * 绘制
+	 *
+	 */
+	function render(cxt){
+		
+		cxt.clearRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);
+		renderDigit(MARGIN_LEFT,MARGIN_TOP,parseInt(cHours/10),cxt);
+		renderDigit(MARGIN_LEFT+15*(RADIUS+1),MARGIN_TOP,parseInt(cHours%10),cxt);
+
+		renderDigit(MARGIN_LEFT+30*(RADIUS+1),MARGIN_TOP,10,cxt);
+
+		renderDigit(MARGIN_LEFT+39*(RADIUS+1),MARGIN_TOP,parseInt(cMinutes/10),cxt);
+		renderDigit(MARGIN_LEFT+54*(RADIUS+1),MARGIN_TOP,parseInt(cMinutes%10),cxt);
+
+		renderDigit(MARGIN_LEFT+69*(RADIUS+1),MARGIN_TOP,10,cxt);
+
+		renderDigit(MARGIN_LEFT+78*(RADIUS+1),MARGIN_TOP,parseInt(cSeconds/10),cxt);
+		renderDigit(MARGIN_LEFT+93*(RADIUS+1),MARGIN_TOP,parseInt(cSeconds%10),cxt);
+	
+
+		for(var i=0;i<balls.length;i++){
+			
+			cxt.fillStyle  = balls[i].color;
+			//console.log(balls[i].color);
+			cxt.beginPath();
+			cxt.arc(balls[i].x,balls[i].y,RADIUS,0,2*Math.PI,true);
+			cxt.closePath();
+			cxt.fill();
+		}
+
+	}
+
+	/**
+	 * 绘制数字
+	 *
+	 */
+	function renderDigit(x,y,num,cxt){
+		cxt.fillStyle = "rgb(0,120,153)";
+
+		// i-行 j-列
+		for(var i=0;i<digit[num].length;i++){
+			for(var j=0;j<digit[num][i].length;j++){
+				if(digit[num][i][j] == 1){
+					//console.log(x+j*2*(RADIUS+1)+(RADIUS));
+					cxt.beginPath();
+					cxt.arc(x+j*2*(RADIUS+1)+(RADIUS),y+i*2*(RADIUS+1)+(RADIUS),RADIUS,0,2*Math.PI);
+					cxt.closePath();
+
+					cxt.fill();
+				}
+			}
+		}
+	}
+	</script>
+</body>
+</html>
