@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"></meta>
+	<title>画图板</title>   
+    <style type="text/css">
+    canvas{border:1px solid #ccc;display:block;margin:0 auto;}
+    </style>	
+</head>
+<body>
+<canvas id="canvas" width="600" height="600"></canvas>
+
+<script type="text/javascript">
+
+window.utils = {};
+/**
+ * 获取鼠标在一个元素上的坐标
+ * @param {HTMLElement} element
+ * @return {object} Contains properties: x, y, event
+ */
+window.utils.captureMouse = function (element) {
+    var mouse = {x: 0, y: 0, event: null};
+    
+    //鼠标一旦移动到元素上则改变坐标，不断改变
+    element.addEventListener('mousemove', function (event) {
+        var x, y;
+        //获取鼠标在页面的位置，IE8以下无pageX该属性
+        if (event.pageX || event.pageY) {
+            x = event.pageX;
+            y = event.pageY;
+        } else {
+            x = event.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            y = event.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+
+        //减去该元素的偏移量，即鼠标在该元素上的位置
+        x -= this.offsetLeft;
+        y -= this.offsetTop;
+
+        mouse.x = x;
+        mouse.y = y;
+        mouse.event = event;
+    }, false);
+   
+    return mouse;
+};
+
+window.onload = function () {
+    var canvas = document.getElementById('canvas'),
+        context = canvas.getContext('2d'),
+        mouse = utils.captureMouse(canvas);
+
+    canvas.addEventListener('mousedown', function () {
+        context.beginPath();
+        context.strokeStyle="red";
+        context.moveTo(mouse.x, mouse.y);
+        canvas.addEventListener('mousemove', onMouseMove, false);
+    }, false);
+
+    canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onMouseMove, false);
+    }, false);
+
+    function onMouseMove () {
+        context.lineTo(mouse.x,mouse.y);
+        context.stroke();
+    }
+};
+</script>
+</body>
+</html>
